@@ -1,18 +1,17 @@
 const express = require("express");
-const cors = require("cors");
+let router = express.Router();
+
+
 const mongoose = require("mongoose");
 
-const User = require('./models/user.js');
-const Quest = require('./models/quest.js');
+
+const User = require('../models/user.js');
+const Quest = require('../models/quest.js');
 
 
 // Express
-const app = express();
-let port = process.env.PORT || 4000;
-
-app.use(cors());
-app.use(express.json());
-
+// const app = express();
+// let port = process.env.PORT || 4000;
 
 mongoose.connect("mongodb+srv://nelson:1223@cluster0.kzhr5.mongodb.net/questBoard?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
@@ -21,20 +20,22 @@ mongoose.connect("mongodb+srv://nelson:1223@cluster0.kzhr5.mongodb.net/questBoar
 
 
 
-app.get("/", (req, res) => {
+
+
+router.get("/", (req, res) => {
     res.status = 200;
     res.send("Welcome to Questboard API v1.2")
 });
 
 
-app.get("/users", async (req, res) => {
+router.get("/users", async (req, res) => {
 
     const adqUsers = await User.find({}).exec();
     res.status = 200;
     res.json(adqUsers);
 })
 
-app.get("/users/:username", async (req, res) => {
+router.get("/users/:username", async (req, res) => {
     const username = req.params.username;
     console.log(`Retrieving ${username} data`);
     const adqUsers = await User.findOne({
@@ -52,7 +53,7 @@ app.get("/users/:username", async (req, res) => {
 });
 
 
-app.post("/users", async (req, res) => {
+router.post("/users", async (req, res) => {
     const {
         username,
         tags,
@@ -83,13 +84,13 @@ app.post("/users", async (req, res) => {
 
 });
 
-app.get("/quests", async (req, res) => {
+router.get("/quests", async (req, res) => {
 
     const adqQuests = await Quest.find({}).exec();
     res.send(adqQuests);
 });
 
-app.get("/quests/:o_id", async (req, res) => {
+router.get("/quests/:o_id", async (req, res) => {
     const {
         o_id
     } = req.params;
@@ -105,7 +106,7 @@ app.get("/quests/:o_id", async (req, res) => {
 
 });
 
-app.delete("/quests/:o_id", async (req, res) => {
+router.delete("/quests/:o_id", async (req, res) => {
     const {
         o_id
     } = req.params;
@@ -128,7 +129,7 @@ app.delete("/quests/:o_id", async (req, res) => {
 })
 
 
-app.post("/quests", async (req, res) => {
+router.post("/quests", async (req, res) => {
     const {
         o_id,
         questName,
@@ -165,7 +166,7 @@ app.post("/quests", async (req, res) => {
     }
 })
 
-app.post("/new-quest", async (req, res) => {
+router.post("/new-quest", async (req, res) => {
     const {
         questName,
         description,
@@ -188,7 +189,7 @@ app.post("/new-quest", async (req, res) => {
 
 });
 
-app.post("/complete-quest", async (req, res) => {
+router.post("/complete-quest", async (req, res) => {
     const {
         o_id,
         username
@@ -227,10 +228,7 @@ app.post("/complete-quest", async (req, res) => {
 
 });
 
+module.exports = router;
 
 
 
-
-app.listen(port, () => {
-    console.log(`Example app is listening on port http://localhost:${port}`);
-})
