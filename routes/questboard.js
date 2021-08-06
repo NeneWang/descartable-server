@@ -15,7 +15,7 @@ const Quest = require('../models/quest.js');
 
 router.get("/", (req, res) => {
     res.status = 200;
-    res.send("Welcome to Questboard API v1.2")
+    res.send("Welcome to Questboard API v1.3")
 });
 
 
