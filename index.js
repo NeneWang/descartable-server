@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+const User = require('models/user.js');
+const Quest = require('models/quest.js');
+
 
 // Express
 const app = express();
@@ -15,23 +18,6 @@ mongoose.connect("mongodb+srv://nelson:1223@cluster0.kzhr5.mongodb.net/questBoar
     useUnifiedTopology: true,
     useNewUrlParser: true,
 });
-
-const userSchema = new mongoose.Schema({
-    username: String,
-    tags: String,
-    questsCompleted: Number,
-
-});
-const User = mongoose.model("User", userSchema);
-
-const questSchema = new mongoose.Schema({
-    questName: String,
-    completed: Boolean,
-    description: String,
-    tags: String,
-    questBoard: Number
-});
-const Quest = mongoose.model("Quest", questSchema);
 
 
 
