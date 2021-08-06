@@ -2,13 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const User = require('models/user.js');
-const Quest = require('models/quest.js');
+const User = require('./models/user.js');
+const Quest = require('./models/quest.js');
 
 
 // Express
 const app = express();
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
