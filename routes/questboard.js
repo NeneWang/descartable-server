@@ -3,6 +3,10 @@ let router = express.Router();
 
 
 const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://nelson:1223@cluster0.kzhr5.mongodb.net/questBoard?retryWrites=true&w=majority", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+});
 
 
 const User = require('../models/user.js');
@@ -13,10 +17,6 @@ const Quest = require('../models/quest.js');
 // const app = express();
 // let port = process.env.PORT || 4000;
 
-mongoose.connect("mongodb+srv://nelson:1223@cluster0.kzhr5.mongodb.net/questBoard?retryWrites=true&w=majority", {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-});
 
 
 
