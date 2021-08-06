@@ -1,0 +1,92 @@
+
+
+
+
+
+GET https://simplenodeserver2.herokuapp.com/users
+
+
+POST https://simplenodeserver2.herokuapp.com/users
+content-type: application/json
+
+{
+    "username": "Merlin",
+    "tags": "Rank-Diamond, Class-Mage",
+    "questsCompleted": 123
+}
+
+POST https://simplenodeserver2.herokuapp.com/users
+content-type: application/json
+
+{
+    "username": "Arthur",
+    "tags": "Rank-Porcelain, Class-Paladin",
+    "questsCompleted": 10
+}
+
+POST https://simplenodeserver2.herokuapp.com/users
+content-type: application/json
+
+{
+    "username": "Merlin",
+    "tags": "Rank-Gold, Class-Mage",
+    "questsCompleted": 150
+}
+
+
+# Get data from Merlin
+GET https://simplenodeserver2.herokuapp.com/users/Goku
+
+# QUEST BOARD TESTS
+
+
+GET https://simplenodeserver2.herokuapp.com/quests
+
+
+# Creating an quest
+
+POST https://simplenodeserver2.herokuapp.com/new-quest
+content-type: application/json
+
+{
+    "questName": "Ghostly Waves",
+    "description": "There are some weird waves moving around, I think they are ghosts..",
+    "tags": "difficulty-Medium, location-Mondstadt",
+    "questBoard": 1
+
+}
+
+# Updating the last quest
+POST https://simplenodeserver2.herokuapp.com/quests
+content-type: application/json
+
+{
+    "o_id": "610bf0ebd2cc930004bf9dc7",
+    "questName": "[update] Ghostly Waves...",
+    "completed": false,
+    "description": "Now that I remember it was near the town plaza... I lost my cat when I got back tomy home it wasn't there hep",
+    "tags": "difficulty-Easy, location-Mondstadt",
+    "questBoard": 1
+
+}
+
+
+
+
+# Getting a specific quest by ID
+GET https://simplenodeserver2.herokuapp.com/quests/610bf0ebd2cc930004bf9dc7
+
+# Delete Quest
+DELETE https://simplenodeserver2.herokuapp.com/quests/610bf0ebd2cc930004bf9dc7
+
+
+#Complete a quest
+POST https://simplenodeserver2.herokuapp.com/complete-quest
+content-type: application/json
+
+{
+    "o_id":"610bf56ad2cc930004bf9dd7",
+    "username":"Merlin"
+
+}
+

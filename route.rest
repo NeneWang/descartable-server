@@ -1,0 +1,113 @@
+
+
+
+
+
+GET http://localhost:3000/users
+
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "username": "Merlin",
+    "tags": "Rank-Diamond, Class-Mage",
+    "questsCompleted": 123
+}
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "username": "Arthur",
+    "tags": "Rank-Porcelain, Class-Paladin",
+    "questsCompleted": 10
+}
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "username": "Merlin",
+    "tags": "Rank-Diamond, Class-Mage",
+    "questsCompleted": 1
+}
+
+
+# Get data from Merlin
+GET http://localhost:3000/users/Merlin
+
+# QUEST BOARD TESTS
+
+
+GET http://localhost:3000/quests
+
+
+# Creating an quest
+
+POST http://localhost:3000/quests
+content-type: application/json
+
+{
+    "o_id": "0",
+    "questName": "Find my lost cat...",
+    "completed": false,
+    "description": "I lost my cat when I got back tomy home it wasn't there hep",
+    "tags": "difficulty-Easy, location-Mondstadt",
+    "questBoard": 1
+
+}
+
+# Updating the last quest
+POST http://localhost:3000/quests
+content-type: application/json
+
+{
+    "o_id": "610b56c328b234d4a42d3134",
+    "questName": "[update] Find my lost cat...",
+    "completed": false,
+    "description": "Now that I remember it was near the town plaza... I lost my cat when I got back tomy home it wasn't there hep",
+    "tags": "difficulty-Easy, location-Mondstadt",
+    "questBoard": 1
+
+}
+
+POST http://localhost:3000/new-quest
+content-type: application/json
+
+{
+    "questName": "Ghostly Waves",
+    "description": "There are some weird waves moving around, I think they are ghosts..",
+    "tags": "difficulty-Medium, location-Mondstadt",
+    "questBoard": 1
+
+}
+
+
+
+# Getting a specific quest by ID
+GET http://localhost:3000/quests/610b58868c0d60bdc0f61939
+
+DELETE http://localhost:3000/quests/610b58868c0d60bdc0f61939
+
+
+#Complete a quest
+POST http://localhost:3000/complete-quest
+content-type: application/json
+
+{
+    "o_id":"610b949372945e000433ca1f",
+    "username":"Merlin"
+
+}
+
+
+#Complete a quest
+POST https://simplenodeserver2.herokuapp.com/complete-quest
+content-type: application/json
+
+{
+    "o_id":"610b949372945e000433ca1f",
+    "username":"Merlin"
+
+}
