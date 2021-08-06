@@ -13,15 +13,6 @@ const User = require('../models/user.js');
 const Quest = require('../models/quest.js');
 
 
-// Express
-// const app = express();
-// let port = process.env.PORT || 4000;
-
-
-
-
-
-
 router.get("/", (req, res) => {
     res.status = 200;
     res.send("Welcome to Questboard API v1.2")
