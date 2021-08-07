@@ -10,7 +10,6 @@ const questboard = require('./routes/questboard');
 
 // Express
 const app = express();
-let port = process.env.PORT || 4000;
 
 
 app.use(cors());
@@ -23,6 +22,4 @@ app.get("/", (req, res) => {
     res.send("Welcome to Descartable API")
 });
 
-app.listen(port, () => {
-    console.log(`Example app is listening on port http://localhost:${port}`);
-})
+app.listen()
