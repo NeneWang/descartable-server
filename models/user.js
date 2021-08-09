@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     username: String,
     tags: String,
     questsCompleted: Number,
+    
 
 });
 
